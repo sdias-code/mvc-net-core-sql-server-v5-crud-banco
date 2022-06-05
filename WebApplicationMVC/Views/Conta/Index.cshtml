@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebApplicationMVC.Models.ContaModel>
+
+@{
+    ViewData["Title"] = "Listar Contas";
+}
+
+<h1>Litar de Contas</h1>
+
+<p>
+    <a asp-action="Create" asp-controller="Conta" class="btn btn-primary" role="button">Cadastrar Conta</a>
+</p>
+<table class="table">
+    <thead>
+        <tr> 
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteId)
+            </th>
+
+            <th>                
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+
+            <th> 
+                @Html.DisplayNameFor(model => model.Agencia)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Saldo)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteId)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Agencia)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Saldo)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mr-1" role="button">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary mr-1" role="button">Detalhes</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" role="button">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
